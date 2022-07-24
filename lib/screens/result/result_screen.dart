@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:questions_app/screens/quiz1/quiz1.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:questions_app/screens/quiz1/quiz1.dart';
 import 'package:questions_app/screens/result/result_bloc.dart';
 import '../../shared/shared_widget.dart';
 import '../home/home_screen.dart';
 
 class ResultScreen extends StatefulWidget {
-  ResultScreen(this.score, this.ListOfQuestions, {Key? key}) : super(key: key);
+  ResultScreen(this.score, this.questionList, {Key? key}) : super(key: key);
   final int score;
-  List ListOfQuestions;
+  List questionList;
   // QuestionHiveModel questionHiveModel;
   @override
   State<ResultScreen> createState() => _ResultScreenState();
@@ -22,7 +22,7 @@ class _ResultScreenState extends State<ResultScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomWidgets().backgroundColor,
+      backgroundColor: const Color.fromARGB(255, 202, 167, 178),
       body: SafeArea(
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
@@ -32,16 +32,16 @@ class _ResultScreenState extends State<ResultScreen> {
               Padding(
                 padding: const EdgeInsets.all(60),
                 child: Image.asset(
-                  CustomWidgets().mainLogo,
+                  "assets/images/logo.png",
                   scale: 2,
                 ),
               ),
               CircularPercentIndicator(
                 radius: 42,
                 lineWidth: 8,
-                percent: widget.score / widget.ListOfQuestions.length,
+                percent: widget.score / widget.questionList.length,
                 center: Text(
-                  "${bloc.calculateThePercentageOfCorrectAnswers(widget.ListOfQuestions, widget.score)} %",
+                  "${bloc.calculateThePercentageOfCorrectAnswers(widget.questionList, widget.score)} %",
                   style: GoogleFonts.neuton(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
@@ -57,7 +57,7 @@ class _ResultScreenState extends State<ResultScreen> {
                   decoration: BoxDecoration(
                       border: Border.all(width: 2, color: Colors.blue)),
                   child: Text(
-                    "${widget.score}/${widget.ListOfQuestions.length}",
+                    "${widget.score}/${widget.questionList.length}",
                     style: GoogleFonts.oldStandardTt(
                         fontSize: 20, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,

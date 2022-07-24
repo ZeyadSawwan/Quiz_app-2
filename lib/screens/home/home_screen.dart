@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:questions_app/screens/quiz1/quiz1.dart';
-import '../../shared/shared_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   static const screenRoute = 'home';
@@ -9,14 +8,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomWidgets().backgroundColor,
+      backgroundColor: const Color.fromARGB(255, 202, 167, 178),
       body: SafeArea(
         child: ListView(children: [
           Center(
             child: Padding(
               padding: const EdgeInsets.only(top: 12),
               child: Image.asset(
-                CustomWidgets().mainLogo,
+                "assets/images/logo.png",
                 scale: 3.5,
               ),
             ),

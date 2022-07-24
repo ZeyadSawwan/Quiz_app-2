@@ -1,6 +1,12 @@
 class QuizlModel {
   String question;
-  Map<String, bool>? answers;
-  String note;
-  QuizlModel({required this.question, this.answers, required this.note});
+  List<String> answers;
+  // String note;
+  bool answerRuslt;
+  String correctAnswer;
+  QuizlModel(
+      {required this.question,
+      required this.answers,
+      this.answerRuslt = false,
+      required this.correctAnswer});
 }
